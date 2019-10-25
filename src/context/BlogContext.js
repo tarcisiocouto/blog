@@ -1,4 +1,5 @@
 import createDataContext from './createDataContext';
+import BlogPostForm from '../components/BlogPostForm';
 
 const blogReducer = (state, action) => {
     switch(action.type){
@@ -12,6 +13,10 @@ const blogReducer = (state, action) => {
             ];
         case 'delete_blogpost':
             return state.filter((blogPost) => blogPost.id !== action.payload );
+        case 'edit_blogpost':
+            return state.map((blogPost) => {
+                return blogPost.id === action.payload.id ? action.payload : blogPost;
+            });
         default:
             return state;
     }
@@ -30,5 +35,16 @@ const deleteBlogPost = dispatch => {
     };
 };
 
-export const { Context, Provider } = createDataContext(blogReducer, { addBlogPost, deleteBlogPost }, 
+const editBlogPost = dispatch => {
+    return (id, title, content, callback) => {
+        dispatch({ type: 'edit_blogpost', payload: {
+            id: id,
+            title: title,
+            content: content
+        }});
+        callback();
+    };
+};
+
+export const { Context, Provider } = createDataContext(blogReducer, { addBlogPost, deleteBlogPost, editBlogPost }, 
     [{ title: 'TEST POST', content: 'TEST CONTENT', id: 1 }]);
