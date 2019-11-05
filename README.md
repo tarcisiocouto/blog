@@ -63,3 +63,9 @@ My App
     API Key
 
     jeWhZ7L6xvOl4yfuwDcr7_X2iqwYhgqeYYInIcKO_jYjOHTAAEldDGgJJfao9pZ7IrOJ3G9cA1tUxcSNYKy-fpb72TABKyrFBWvFel_UKYGNyYHzXFUbunMFynenXXYx -->
+
+<!-- Comandos a serem rodados - 3 janelas 
+- npm start (blog)
+- npm run db (json-server)
+- npm run tunnel (json-server)
+-->
